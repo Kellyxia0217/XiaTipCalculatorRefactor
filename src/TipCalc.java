@@ -1,42 +1,45 @@
 public class TipCalc {
-    private int numPeople;
-    private int TipPercent;
-    private double TotalBillBeforeTip;
+    private static int numPeople;
+    private static double TipPercent;
+    private static double TotalBillBeforeTip;
 
-    public TipCalc (int numPeople, int TipPercent) {
+    public TipCalc (int numPeople, double TipPercent) {
         this.numPeople = numPeople;
         this.TipPercent = TipPercent;
-        TotalBillBeforeTip = 0;
+        TotalBillBeforeTip = 1;
     }
 
-    public double GetTotalBillBeforeTip (){
+    public static Object getTotalBillBeforeTip() {
         return TotalBillBeforeTip;
     }
-    public int GetTipPercent() {
+
+    public static double getTipPercentage(){
         return TipPercent;
     }
-    public void addMeal (double cost) {
-        TotalBillBeforeTip = TotalBillBeforeTip + cost;
+
+
+    public static void addMeal(double cost) {
+        TotalBillBeforeTip = TotalBillBeforeTip + cost ;
     }
 
-    public double tipAmount() {
-       return TotalBillBeforeTip * TipPercent;
+    public static double tipAmount() {
+        return TotalBillBeforeTip * (TipPercent/100);
     }
 
-    public double totalBill() {
+    public static double totalBill() {
         return TotalBillBeforeTip + tipAmount();
     }
 
-    public double perPersonCostBeforeTip() {
+    public static double perPersonCostBeforeTip() {
         return TotalBillBeforeTip/numPeople;
     }
 
-    public double perPersonTipAmount() {
+    public static double perPersonTipAmount() {
         return tipAmount()/numPeople;
 
     }
 
-    public double perPersonTotalCost() {
+    public static double perPersonTotalCost() {
         return  perPersonCostBeforeTip() + perPersonTipAmount();
     }
 
